@@ -55,6 +55,7 @@ export async function fetchGithubIssues(
     .flat()
     .filter(
       (issue) =>
+        issue.state === "open" && // Exclude closed issues
         !issue.pull_request && // Not a PR
         !issue.assignees?.length, // Not assigned
     )
